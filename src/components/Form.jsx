@@ -3,63 +3,76 @@ import Logo from "./Logo";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import emailjs from "@emailjs/browser";
-import Modal from "./Modal";
+import { Link } from "react-router-dom";
+
 gsap.registerPlugin(useGSAP);
 
 const Form = () => {
-  const [show, setShow] = useState(false);
 
-  const modalDisplay = () => {
-    setShow((s) => true);
-  };
-  // useGSAP(() => {
-  //   const tl = gsap.timeline();
-  //   tl.fromTo(
-  //     ".lg",
-  //     {
-  //       scale: 0.7,
-  //       opacity: 0.5,
-  //     },
-  //     {
-  //       repeat: 2,
-  //       opacity: 1,
-  //       scale: 1,
-  //       yoyo: true,
-  //       duration: 1.2,
-  //     }
-  //   );
-  //   tl.fromTo(
-  //     ".lg",
-  //     {
-  //       y: 250,
-  //       scale: 0.5,
-  //     },
-  //     {
-  //       y: 0,
-  //       yoyo: true,
-  //       duration: 1,
-  //       scale: 1,
-  //     }
-  //   );
-  //   tl.from(
-  //     "b",
-  //     {
-  //       scale: 0,
-  //       y: 100,
-  //       opacity: 0,
-  //       duration: 1,
-  //       ease: "bounce",
-  //     },
-  //     ">"
-  //   );
-  //   tl.from("input, select", {
-  //     y: 50,
-  //     opacity: 0,
-  //     stagger: .2
-  //   },">");
-  // }, []);
   const go = "checked";
   const form = useRef();
+
+  useGSAP(() => {
+    const tl = gsap.timeline();
+    tl.fromTo(
+      ".lg",
+      {
+        scale: 0.7,
+        opacity: 0.5,
+      },
+      {
+        repeat: 2,
+        opacity: 1,
+        scale: 1,
+        yoyo: true,
+        duration: 1.2,
+      }
+    );
+    tl.fromTo(
+      ".lg",
+      {
+        y: 250,
+        scale: 0.5,
+      },
+      {
+        y: 0,
+        yoyo: true,
+        duration: 1,
+        scale: 1,
+      }
+    );
+    tl.from(
+      "b",
+      {
+        scale: 0,
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        ease: "bounce",
+      },
+      ">"
+    );
+    tl.from(
+      "input, select",
+      {
+        y: 50,
+        opacity: 0,
+        stagger: 0.2,
+      },
+      ">"
+    );
+    tl.to(
+      ".btn",
+      {
+        y: 10,
+        opacity: 1,
+        ease: "back"
+      },
+      ">"
+    );
+  }, []);
+
+
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -74,6 +87,7 @@ const Form = () => {
       .then(
         () => {
           console.log("SUCCESS!");
+         
         },
         (error) => {
           console.log("FAILED...", error.text);
@@ -111,7 +125,6 @@ const Form = () => {
           type="tel"
           className="form-control"
           name="phone"
-          //   pattern="[0–9]{10}"
           required
           placeholder="Mobile No."
         />
@@ -223,13 +236,11 @@ const Form = () => {
           required
         />
 
-        <button onClick={modalDisplay} className="btn sub" type="submit">
+        <Link to="/submitted" className="btn sub" type="submit">
           Submit
-        </button>
+        </Link>
       </form>
-      <div style={{ display: show ? "block" : "none" }} className="modal-cover">
-        <Modal />
-      </div>
+      
     </div>
   );
 };

@@ -121,16 +121,18 @@ input[type="checkbox"]:checked {
   accent-color: var(--text-color-two);
 }
 
-button.sub {
+.sub {
   background-color: var(--text-color-two);
   color: var(--text-color);
   border-radius: 2rem;
-  width: 100px;
-  height: 50px;
+  margin-bottom: 20px;
+  width: 120px;
+  height: 40px;
   transition: .3s;
+  opacity: 0;
 }
 
-button.sub:hover {
+.sub:hover {
   background-color: var(--text-color);
   border: 1px solid var(--text-color-two);
   
@@ -144,9 +146,10 @@ button.sub:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1c1a1a45;
+  background-color: #1c1a1add;
   backdrop-filter: blur(10px);
   z-index: 2;
+  /* opacity: 0; */
 }
 
 .modal {
@@ -162,18 +165,39 @@ button.sub:hover {
   flex-direction: column;  
 }
 
-.check h3 {
-  color: var(--text-color);
+.txt {
+  color:var(--text-color);
   font-weight: bold;
+  text-align: center;
+  margin: auto;
 }
 
 .mark {
   font-size: 100px;
 }
 
-.modal-cover {
-  display: none;
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1a1a45;
+  backdrop-filter: blur(10px);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(100px);
+
 }
 
+.lds {
+  color: white;
+  font-weight: bold;
+}
 
 
