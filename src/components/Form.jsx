@@ -3,14 +3,13 @@ import Logo from "./Logo";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import emailjs from "@emailjs/browser";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(useGSAP);
 
 const Form = () => {
-
-  const go = "checked";
   const form = useRef();
+  const navigate = useNavigate();
 
   useGSAP(() => {
     const tl = gsap.timeline();
@@ -66,20 +65,18 @@ const Form = () => {
       {
         y: 10,
         opacity: 1,
-        ease: "back"
+        ease: "back",
       },
       ">"
     );
   }, []);
-
-
 
   const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
-        "service_akyrvcw",
+        "service_i0aedcp",
         "template_c3hu1be",
         form.current,
         "2khhqb45n_XPdVi3R"
@@ -87,7 +84,7 @@ const Form = () => {
       .then(
         () => {
           console.log("SUCCESS!");
-         
+          navigate("/submitted")
         },
         (error) => {
           console.log("FAILED...", error.text);
@@ -232,15 +229,15 @@ const Form = () => {
           type="text"
           className="form-control"
           name="aim"
-          placeholder="What is your of Joining?"
+          placeholder="What is your of aim Joining?"
           required
         />
 
-        <Link to="/submitted" className="btn sub" type="submit">
+        <button type="submit" className="btn sub">
           Submit
-        </Link>
+          {/* <Link className="text-decoration-none ln" to="/submitted">Submit</Link> */}
+        </button>
       </form>
-      
     </div>
   );
 };

@@ -123,7 +123,7 @@ input[type="checkbox"]:checked {
 
 .sub {
   background-color: var(--text-color-two);
-  color: var(--text-color);
+
   border-radius: 2rem;
   margin-bottom: 20px;
   width: 120px;
@@ -135,7 +135,15 @@ input[type="checkbox"]:checked {
 .sub:hover {
   background-color: var(--text-color);
   border: 1px solid var(--text-color-two);
-  
+  color: #F45C2C;
+}
+
+.ln {
+  color: var(--text-color);
+}
+
+button:hover .ln {
+  color: #F45C2C;
 }
 
 .overlay {
